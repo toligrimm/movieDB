@@ -1,0 +1,25 @@
+body{
+    background-color: #1E1E1E;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .filters {
+    margin-bottom: 20px;
+  }
+  
+  .movies-list {
+    margin-top: 20px;
+  }
+  
+  .movie-item {
+    margin-bottom: 10px;
+  }
+  
+  .movie-item span {
+    font-weight: bold;
+  }
+  

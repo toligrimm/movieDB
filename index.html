@@ -1,0 +1,73 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Фильмы</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Поиск фильмов</h1>
+    <button onclick="loadMoviesFromCSV('https://docs.google.com/spreadsheets/d/e/2PACX-1vRFpvCsRnF4CB6HcbkhnKGZDqTlveaP6gcZzXrBojdSn4nAhdjtzcQX4A3JK-e8wl3N_WtRoPCK04rt/pub?gid=864620309&single=true&output=csv')">Загрузить фильмы</button>
+
+    <div class="filters">
+      <label for="genre">Жанр:</label>
+      <select id="genre">
+        <option value="action">Боевик</option>
+        <option value="comedy">Комедия</option>
+        <option value="drama">Драма</option>
+        Добавьте другие жанры по вашему выбору -->
+      <!-- </select>
+      <label for="year">Год:</label>
+      <input type="text" id="year">
+      <button onclick="applyFilters()">Применить</button>
+    </div>
+    <div id="movies-list" class="movies-list">
+      Здесь будет отображаться список фильмов
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Таблица</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+    <h1>Список из Google Таблицы</h1>
+    <ul id="data-list"></ul>
+
+    <script>
+        // Функция для загрузки данных из CSV-файла
+        function loadCSV(url, callback) {
+            Papa.parse(url, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    callback(results.data);
+                }
+            });
+        }
+
+        // Функция для вывода данных в список
+        function displayData(data) {
+            var dataList = document.getElementById('data-list');
+            dataList.innerHTML = ''; // Очищаем список перед добавлением новых элементов
+            data.forEach(function(row) {
+                var listItem = document.createElement('li');
+                listItem.textContent = row['Название статьи']; // Поменяйте на нужное имя столбца
+                dataList.appendChild(listItem);
+            });
+        }
+
+        // Загружаем CSV и выводим данные
+        loadCSV('https://docs.google.com/spreadsheets/d/e/2PACX-1vT7-khYLZWx6yme0p7w5mzMRV28HBSUxjW-2L0VwzOTlRJBurRc34pRsnQqbjc3oTZFMgpUgmKQQWi2/pub?output=csv', displayData);
+    </script>
+</body>
+</html>
